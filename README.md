@@ -1,57 +1,18 @@
-<p align="center"><img src="docs/blueprint_logo.png" alt="Blueprint Logo" height="100"></p>
+This is a slightly modified version of [Blueprint](https://github.com/wordandahalf/Blueprint) - the simple, annotation-driven library for modifying 
+Java byte-code at runtime - used for code injection in the [Equilinox Mod Kit](https://github.com/EquilinoxModKit/Equilinox-Mod-Kit) and 
+[Equilinox Mod Loader](https://github.com/EquilinoxModKit/Equilinox-Mod-Loader).
 
 ---
 
-**Blueprint** is a simple, annotation-driven library for modifying Java code at runtime
+#### What's different to the original Blueprint?
+- Changed parameter `target` of annotation `@Blueprint` from `String` to `Class`.<br>
+  Old usage: `@Blueprint(target = "mypackage.MyClass")`.<br>
+  New usage: `@Blueprint(target = MyClass.class)`
+- Introduced final fields for parameter `at` of annotation `@Inject`.<br>
+  Old usage: `@Inject(target = "myMethod", at = @At(location = "HEAD"))`.<br>
+  New usage: `@Inject(target = "myMethod", at = @At(location = At.Pos.HEAD))`
+- Minor code and documentation improvements.
 
-# Usage
-Currently, Blueprint is not hosted on any Maven repositories, so you must download the source and manually compile it. This README will be updated to reflect whether or not that changes.
+---
 
-To include it as a dependency, either directly add the JAR or add the following dependecy to your POM.
-```xml
-<dependency>
-    <groupId>io.github.wordandahalf</groupId>
-    <artifactId>Blueprint</artifactId>
-    <version>0.0.1-DEV</version>
-</dependency>
-```
-
-Here is a simple example of how to utilize Blueprint:
-```java
-package blueprintTest;
-
-public class Foo {
-    private String text;
-    
-    public Foo() { this.text = "Hello, foo!"; }
-    
-    public void getFoo() { System.out.println(this.text); }
-}
-```
-
-```java
-package blueprintTest;
-
-@Blueprint(target = "blueprintTest.Foo")
-public class BlueprintTest {
-    public static void main(String[] args) throws Exception {
-        Blueprints.add(BlueprintTest.class);
-        
-        Foo foo = new Foo();
-        foo.getFoo();
-    }
-    
-    @Inject(target = "getFoo", at = @At(location = "TAIL"))
-    public void getFoo() {
-        System.out.println("Hello, world!");
-    }
-}
-```
-
-When ran, this program will have the output:
-```
-Hello, foo!
-Hello, world!
-```
-
-For more extensive documentation and examples, please see the [Wiki](https://github.com/wordandahalf/Blueprint/wiki)
+For examples and tutorials visit the official [Blueprint Wiki](https://github.com/wordandahalf/Blueprint/wiki).

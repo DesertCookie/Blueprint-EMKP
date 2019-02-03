@@ -1,4 +1,5 @@
-*.iml
-.idea/*
-target/*
-*.dat
+.idea
+build
+out
+
+.gitignore

@@ -1,15 +1,19 @@
 package io.github.wordandahalf.blueprint.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+
+import java.lang.annotation.*;
+
 
 /**
- * Used to denote classes that contain methods decorated with injection-related annotations
+ * Used to mark classes that contain methods decorated with injection-related annotations like {@link Inject} or {@link Override}.
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Retention( RetentionPolicy.RUNTIME )
+@Target( ElementType.TYPE )
 public @interface Blueprint {
-    String target();
+	
+	
+	/**Class to modify. */
+	Class<?> target();
+	
+	
 }
