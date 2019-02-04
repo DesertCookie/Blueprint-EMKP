@@ -1,3 +1,7 @@
+<p align="center"><img src="docs/blueprint_emkp_logo.png" alt="Blueprint Logo" height="100"></p>
+
+---
+
 This is a slightly modified version of [Blueprint](https://github.com/wordandahalf/Blueprint) - the simple, annotation-driven library for modifying 
 Java byte-code at runtime - used for code injection in the [Equilinox Mod Kit](https://github.com/EquilinoxModKit/Equilinox-Mod-Kit) and 
 [Equilinox Mod Loader](https://github.com/EquilinoxModKit/Equilinox-Mod-Loader).
