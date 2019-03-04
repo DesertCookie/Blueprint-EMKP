@@ -1,35 +1,31 @@
 package io.github.wordandahalf.blueprint;
 
 
-import io.github.wordandahalf.blueprint.annotations.At;
-import io.github.wordandahalf.blueprint.annotations.Blueprint;
-import io.github.wordandahalf.blueprint.annotations.Inject;
-import io.github.wordandahalf.blueprint.annotations.Overwrite;
+import io.github.wordandahalf.blueprint.annotations.*;
 
 
-@Blueprint(target = Foo.class)
+@Blueprint( target = "io.github.wordandahalf.blueprint.Foo" )
 public class BlueprintTest {
-    
-    
-    public static void main(String[] args) throws Exception {
-        Blueprints.add(BlueprintTest.class);
-
-        Foo foo = new Foo();
-        foo.getFoo(1, false);
-        foo.getBar();
-    }
-
-    
-    @Inject(target = "getFoo", at = @At(location = At.Pos.HEAD))
-    public void getFoo(int i, boolean j) {
-        i = 420;
-        System.out.println("Hello from getBar()!");
-    }
-
-    @Overwrite(target = "getBar")
-    public void getBar() {
-        System.out.println("BAR OVERWRITE!");
-    }
-    
-    
+	
+	
+	public static void main( String[] args ) throws Exception {
+		Blueprints.add( BlueprintTest.class );
+		
+		Foo myFoo = new Foo();
+		System.out.println( myFoo.getFoo() );
+		myFoo.sayBar();
+	}
+	
+	
+	@Inject( target = "getFoo", at = @At( location = At.HEAD ) )
+	private void getFoo() {
+		System.out.println( "Hello, from injection!" );
+	}
+	
+	@Overwrite( target = "sayBar" )
+	private void sayBar() {
+		System.out.println( "Hello, from Overwrite!" );
+	}
+	
+	
 }

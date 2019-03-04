@@ -10,12 +10,10 @@ public class PlanParameterException extends Exception {
 	private String method;
 	private CtClass[] expectedParameters;
 	
-	
 	public PlanParameterException( String method,CtClass[] expectedParameters ) {
 		this.method = method;
 		this.expectedParameters = expectedParameters;
 	}
-	
 	
 	@Override
 	public String getMessage() {

@@ -2,28 +2,23 @@ package io.github.wordandahalf.blueprint;
 
 
 public class Foo {
-    
-    
-    private String text;
-
-    
-    public Foo() {
-        this.text = "Hello, foo!";
-    }
-
-    
-    public static void staticMethod() {
-        System.out.println("Hello, static world!");
-    }
-
-    
-    public void getBar() {
-        System.out.println("BAR");
-    }
-    
-    public void getFoo(int i, boolean j) {
-        System.out.println(this.text + " " + i);
-    }
-    
-    
+	
+	
+	private String fooText;
+	
+	
+	public Foo() {
+		this.fooText = "Hello, foo!";
+	}
+	
+	
+	public String getFoo() {
+		return this.fooText;
+	}
+	
+	public void sayBar() {
+		System.out.println( "Hello, bar!" );
+	}
+	
+	
 }

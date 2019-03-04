@@ -12,8 +12,8 @@ import java.lang.annotation.*;
 public @interface Blueprint {
 	
 	
-	/**Class to modify. */
-	Class<?> target();
+	/** Class to modify. */
+	String target();
 	
 	
 }
