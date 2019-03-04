@@ -9,9 +9,9 @@ Java byte-code at runtime - used for code injection in the [Equilinox Mod Kit](h
 ---
 
 #### What's different to the original Blueprint?
-- Introduced final fields for parameter `at` of annotation `@Inject`.<br>
-  Old usage: `@Inject(target = "myMethod", at = @At(location = "HEAD"))`.<br>
-  New usage: `@Inject(target = "myMethod", at = @At(location = At.Pos.HEAD))`
+- Changed final fields for parameter `at` of annotation `@Inject`.<br>
+  Old usage: `@Inject(target = "myMethod", at = @At(location = At.Location.HEAD))`.<br>
+  New usage: `@Inject(target = "myMethod", at = @At(location = At.HEAD))`
 - Minor code and documentation improvements/reformats.
 
 ---

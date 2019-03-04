@@ -9,22 +9,41 @@ public class BlueprintTest {
 	
 	
 	public static void main( String[] args ) throws Exception {
+		System.out.println( "Starting BlueprintTest..." );
+		
+		System.out.println( "Blueprints#add" );
 		Blueprints.add( BlueprintTest.class );
 		
-		Foo myFoo = new Foo();
-		System.out.println( myFoo.getFoo() );
-		myFoo.sayBar();
-	}
-	
-	
-	@Inject( target = "getFoo", at = @At( location = At.HEAD ) )
-	private void getFoo() {
-		System.out.println( "Hello, from injection!" );
+		System.out.println( "Blueprints#apply" );
+		Blueprints.apply();
+		
+		System.out.println( "Verify:" );
+		
+		Foo foo = new Foo();
+		
+		System.out.println( "Foo#sayBar(\"Good morning\")" );
+		foo.sayBar( "Good morning" );
+		
+		System.out.println( "Foo#getFoo()" );
+		
+		System.out.println( foo.getFoo() );
+		
+		System.out.println( "Done with tests" );
 	}
 	
 	@Overwrite( target = "sayBar" )
-	private void sayBar() {
-		System.out.println( "Hello, from Overwrite!" );
+	public void sayBar( String greeting ) {
+		System.out.println( greeting + ", overwrite!" );
+	}
+	
+	@Inject( target = "getFoo", at = @At( location = At.HEAD ) )
+	private void getFoo_head() {
+		System.out.println( "Entering getFoo()" );
+	}
+	
+	@Inject( target = "getFoo", at = @At( location = At.TAIL ) )
+	private void getFoo_tail() {
+		System.out.println( "Leaving getFoo()" );
 	}
 	
 	

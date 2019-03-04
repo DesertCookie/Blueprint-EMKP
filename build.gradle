@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'io.github.wordandahalf'
-version '0.0.3'
+version '0.1.0'
 
 sourceCompatibility = 1.8
 
@@ -14,11 +14,19 @@ repositories {
 
 dependencies {
 	compile 'org.javassist:javassist:3.24.1-GA'
+	compile 'org.ow2.asm:asm:7.0'
+	compile 'org.ow2.asm:asm-commons:7.0'
+	compile 'org.ow2.asm:asm-util:7.0'
+	compile 'org.ow2.asm:asm-tree:7.0'
 }
 
 shadowJar {
 	dependencies {
 		include(dependency('org.javassist:javassist:3.24.1-GA'))
+		include(dependency('org.ow2.asm:asm:7.0'))
+		include(dependency('org.ow2.asm:asm-commons:7.0'))
+		include(dependency('org.ow2.asm:asm-util:7.0'))
+		include(dependency('org.ow2.asm:asm-tree:7.0'))
 	}
 	from 'license.txt' rename('license.txt', 'blueprint_license.txt')
 

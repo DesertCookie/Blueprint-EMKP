@@ -9,24 +9,19 @@ import java.lang.annotation.*;
 public @interface At {
 	
 	
-	/** The beginning of the method. */
-	String HEAD = "HEAD";
-	/** The end of the method. */
-	String TAIL = "TAIL";
-	/** Before the return of a method. */
-	String BEFORE_RETURN = "BEFORE_RETURN";
-	/** Replaces the invocation of the specified method, see {@link At#args()}. */
-	String INVOCATION = "INVOCATION";
+	public static final String
+		HEAD = "HEAD",
+		TAIL = "TAIL",
+		LINE = "LINE",
+		INVOCATION = "INVOCATION",
+		FIELD = "FIELD",
+		NEW = "NEW";
 	
 	
-	/**
-	 * Location the specified code gets injected into.<br> Currently supported values include {@code HEAD}, {@code TAIL}, {@code BEFORE_RETURN} and
-	 * {@code INVOCATION}.
-	 */
-	String location();
+	String location() default HEAD;
 	
 	/**
-	 * Any needed arguments for the location argument.
+	 * Any needed arguments for the location
 	 */
 	String[] args() default {};
 	
